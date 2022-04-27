@@ -72,7 +72,10 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return response([
+            'data'=>new ProductResource($product),
+        ],HttpFoundationResponse::HTTP_CREATED);
     }
 
     /**
